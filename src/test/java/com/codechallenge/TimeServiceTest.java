@@ -76,4 +76,10 @@ class TimeServiceTest {
                     assertEquals(false, result.isBlank());
                 });
     }
+    @Test
+    void throwsForNullTime() {
+        IllegalArgumentException ex = assertThrows(IllegalArgumentException.class,
+                () -> timeService.speak(null));
+        assertEquals("Time must not be null.", ex.getMessage());
+    }
 }

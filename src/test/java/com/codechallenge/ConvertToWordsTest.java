@@ -20,4 +20,13 @@ class ConvertToWordsTest {
         assertThrows(IllegalArgumentException.class, () -> ConvertToWords.convert(0));
         assertThrows(IllegalArgumentException.class, () -> ConvertToWords.convert(60));
     }
+
+    @Test
+    void throwsForNegativeNumber() {
+        assertThrows(IllegalArgumentException.class, () -> ConvertToWords.convert(-1));
+    }
+    @Test
+    void throwsForLargeOutOfRangeNumber() {
+        assertThrows(IllegalArgumentException.class, () -> ConvertToWords.convert(1000));
+    }
 }

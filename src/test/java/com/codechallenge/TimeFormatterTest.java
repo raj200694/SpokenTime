@@ -15,7 +15,23 @@ class TimeFormatterTest {
         assertEquals(LocalTime.of(7, 35), TimeFormatter.parse("07:35"));
         assertEquals(LocalTime.of(23, 59), TimeFormatter.parse("23:59"));
     }
+    @Test
+    void parsesMidnight() {
+        assertEquals(LocalTime.of(0, 0), TimeFormatter.parse("00:00"));
+    }
 
+    @Test
+    void throwsForNullInput() {
+        IllegalArgumentException ex = assertThrows(IllegalArgumentException.class,
+                () -> TimeFormatter.parse(null));
+        assertEquals("Time must not be null or blank.", ex.getMessage());
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"", "   "})
+    void throwsForBlankInput(String value) {
+        assertThrows(IllegalArgumentException.class, () -> TimeFormatter.parse(value));
+    }
     @Test
     void shouldRejectInvalidTime() {
         assertThrows(IllegalArgumentException.class, () -> TimeFormatter.parse("12:60"));
