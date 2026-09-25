@@ -6,6 +6,7 @@ import java.time.LocalTime;
 import java.util.stream.IntStream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class TimeServiceTest {
 
@@ -79,7 +80,7 @@ class TimeServiceTest {
     @Test
     void throwsForNullTime() {
         IllegalArgumentException ex = assertThrows(IllegalArgumentException.class,
-                () -> timeService.speak(null));
+                () -> service.speak(null));
         assertEquals("Time must not be null.", ex.getMessage());
     }
 }

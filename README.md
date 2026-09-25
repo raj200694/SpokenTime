@@ -12,7 +12,7 @@ Input:  06:32      Output: six thirty-two
 
 ## Requirements
 
-- Java 17+
+- Java 21+
 - Maven 3.8+
 
 ## Building and running
@@ -32,7 +32,7 @@ mvn package
 Run it against a time:
 
 ```bash
-java -jar target/british-time.jar "14:32"
+java -jar target/british-time.jar "14:35"
 # twenty-five to three
 ```
 
